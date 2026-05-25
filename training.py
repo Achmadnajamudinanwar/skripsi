@@ -186,7 +186,7 @@ history = model.fit(
 
     validation_data=val_generator,
 
-    epochs=200,
+    epochs=10,
 
     callbacks=callbacks
 )
@@ -195,7 +195,7 @@ history = model.fit(
 # SIMPAN MODEL
 # =========================
 
-model.save('model.keras')
+model.save("best_model.h5")
 
 # =========================
 # GRAFIK ACCURACY
