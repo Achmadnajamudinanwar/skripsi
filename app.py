@@ -18,7 +18,13 @@ st.set_page_config(
 
 @st.cache_resource
 def load_cnn_model():
-    return load_model("best_model.h5", compile=False)
+
+    model = load_model(
+        "best_model.keras",
+        compile=False
+    )
+
+    return model
 
 model = load_cnn_model()
 

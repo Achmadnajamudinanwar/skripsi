@@ -1,7 +1,6 @@
-streamlit
+streamlit==1.35.0
 tensorflow==2.15.0
 numpy==1.26.4
-pillow
-pandas
-h5py
-protobuf==3.20.*
+pandas==2.2.2
+pillow==10.3.0
+h5py==3.10.0
