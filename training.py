@@ -5,10 +5,8 @@ from tensorflow.keras.models import Model
 from tensorflow.keras.layers import Dense, Dropout, GlobalAveragePooling2D
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint
-
 from sklearn.metrics import classification_report
 from sklearn.metrics import confusion_matrix
-
 import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
@@ -164,16 +162,12 @@ model.compile(
 callbacks = [
 
 
-    ModelCheckpoint(
-
-        'best_model.keras',
-
-        monitor='val_accuracy',
-
-        save_best_only=True,
-
-        verbose=1
+    EarlyStopping(
+        monitor='val_loss',
+        patience=3,
+        restore_best_weights=True
     )
+
 ]
 
 # =========================
@@ -195,7 +189,7 @@ history = model.fit(
 # SIMPAN MODEL
 # =========================
 
-model.save("best_model.keras")
+model.save("best_model.h5")
 
 # =========================
 # GRAFIK ACCURACY
