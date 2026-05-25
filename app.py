@@ -26,7 +26,7 @@ def load_cnn_model():
     )
     return model
 
-model = load_cnn_model()
+model.save("best_model.h5")
 
 # =========================================================
 # LABEL KELAS
