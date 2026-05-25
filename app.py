@@ -7,19 +7,11 @@ import os
 import sys
 import streamlit.web.cli as stcli
 
-# =========================================================
-# AUTO RUN STREAMLIT
-# =========================================================
-
-if __name__ == "__main__" and st.runtime.exists() == False:
-
-    sys.argv = [
-        "streamlit",
-        "run",
-        os.path.abspath(__file__)
-    ]
-
-    sys.exit(stcli.main())
+import streamlit as st
+import numpy as np
+from PIL import Image
+from tensorflow.keras.models import load_model
+import pandas as pd
 
 # =========================================================
 # KONFIGURASI HALAMAN
@@ -34,7 +26,11 @@ st.set_page_config(
 # LOAD MODEL
 # =========================================================
 
-model = load_model("best_model.keras")
+@st.cache_resource
+def load_cnn_model():
+    return load_model("best_model.keras", compile=False)
+
+model = load_cnn_model()
 
 # =========================================================
 # LABEL KELAS
