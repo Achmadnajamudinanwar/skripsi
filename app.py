@@ -1,5 +1,4 @@
 import streamlit as st
-import tensorflow as tf
 from tensorflow.keras.models import load_model
 from PIL import Image
 import numpy as np
@@ -35,10 +34,13 @@ class_names = [
 # =========================
 
 st.title("Klasifikasi Wilayah Perkotaan")
-st.write("Upload gambar untuk diprediksi")
+
+st.write(
+    "Upload gambar untuk diprediksi"
+)
 
 # =========================
-# UPLOAD
+# UPLOAD GAMBAR
 # =========================
 
 uploaded_file = st.file_uploader(
@@ -80,5 +82,5 @@ if uploaded_file is not None:
     )
 
     st.write(
-        f"Akurasi Prediksi: {confidence:.2f}"
+        f"Confidence: {confidence:.2f}"
     )
